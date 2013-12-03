@@ -32,7 +32,7 @@ The editor works by PUTting the updated value to the server and GETting the upda
 - Provided test helpers to be used in your integration specs
 - Custom display methods using a method from your model or an existing rails view helper
 - Input field masking compatible with maskedInput
-- Checkbox can display an actual HTML checkbox
+- Checkbox can display an actual HTML checkbox or images
 
 ##Usage of Rails 3 Gem
 
@@ -123,9 +123,13 @@ The key can be a string or an integer.
 The first value is always the negative boolean value and the second the positive. Structure: `["false value", "true value"]`.
 If not defined, it will default to *Yes* and *No* options.
 
-    <%= best_in_place @user, :receive_emails, :type => :checkbox, :collection => [:actual_checkbox] %>
+Image tags can be used as the collection values:
 
-This renders a standard HTML checkbox.
+    <%= best_in_place @user, :receive_emails, :type => :checkbox, :collection => [image_tag('no.png'), image_tag('yes.png')] %>
+
+The collection can also specify a standard HTML checkbox:
+
+    <%= best_in_place @user, :receive_emails, :type => :checkbox, :collection => [:actual_checkbox] %>
 
 ### Date
 
